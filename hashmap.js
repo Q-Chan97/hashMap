@@ -9,7 +9,8 @@ class HashMap {
 
         const primeNumber = 31;
         for (let i = 0; i < key.length; i++) {
-            hashCode = primeNumber * hashCode + key.charCodeAt(i);
+            // Modulo entire hash, still is able to map to buckets
+            hashCode = (primeNumber * hashCode + key.charCodeAt(i)) % this.capacity;
         }
         return hashCode;
     }
