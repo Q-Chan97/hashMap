@@ -40,6 +40,10 @@ class HashMap {
             }
             current = current.nextNode; // Advances through list
         }
+
+        // Case for no key found
+        this.buckets[index].append({key, value}); // Appends key and value to bucket
+        this.size++;
     }
 }
 
