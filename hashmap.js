@@ -45,4 +45,22 @@ export class HashMap {
         this.buckets[index].append({key, value}); // Appends key and value to bucket
         this.size++;
     }
+
+    get(key) {
+        const index = this.hash(key); // Get index
+
+        if (!this.buckets[index]) { // Guard if no bucket exists
+            return null;
+        }
+
+        let current = this.buckets[index].head; // Start at head of bucket
+
+        while (current) {
+            if (current.value.key === key) {
+                console.log(current.value.value);
+                return current.value.value;
+            } 
+            current = current.nextNode;
+        }
+    }
 }
