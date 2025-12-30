@@ -1,7 +1,11 @@
+import { LinkedList } from "./linkedLists.js";
+
 class HashMap {
     constructor() {
         this.loadFactor = 0.75;
         this.capacity = 16;
+        this.size = 0; // Keep track of size 
+        this.buckets = new Array(this.capacity); // Buckets will be an array of our capacity
     }
 
     hash(key) {
@@ -14,7 +18,20 @@ class HashMap {
         }
         return hashCode;
     }
+
+    set(key, value) {
+        let index = this.hash(key);
+
+        if (!this.buckets[index]) { // If index is empty, set value to be passed in value
+            let list = new LinkedList(); // Creates linked list as bucket
+            list.append({key, value}); // Appends object to linked list
+            this.buckets[index] = list; // Adds the linked list to buckets array
+            this.size++; // Increase size
+            console.log(list);
+            return;
+        }
+    }
 }
 
-let hash = new HashMap;
-console.log(hash.hash("Frank"));
+let hash = new HashMap();
+hash.set("Age", 42);
