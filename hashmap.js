@@ -30,6 +30,15 @@ class HashMap {
             console.log(list);
             return;
         }
+
+        let current = this.buckets[index].head; // Targets head node of linked list
+
+        while (current) {
+            if (current.value.key === key) { // If there's a key match in the object
+                current.value.value = value; // Overwrites value
+            }
+            current = current.nextNode; // Advances through list
+        }
     }
 }
 
