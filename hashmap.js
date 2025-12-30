@@ -36,6 +36,7 @@ class HashMap {
         while (current) {
             if (current.value.key === key) { // If there's a key match in the object
                 current.value.value = value; // Overwrites value
+                return;
             }
             current = current.nextNode; // Advances through list
         }
