@@ -63,4 +63,25 @@ export class HashMap {
             current = current.nextNode;
         }
     }
+
+    has(key) {
+        const index = this.hash(key); // Get index
+
+        if (!this.buckets[index]) { // Guard if no bucket exists
+            return false;
+        }
+
+        let current = this.buckets[index].head; // Start at head of bucket
+
+        while (current) {
+            if (current.value.key === key) {
+                console.log("It's there!")
+                return true;
+            } 
+            current = current.nextNode;
+        } 
+        console.log("Not there...");
+        return false;
+    }
+
 }
