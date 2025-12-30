@@ -46,6 +46,3 @@ class HashMap {
         this.size++;
     }
 }
-
-let hash = new HashMap();
-hash.set("Age", 42);
