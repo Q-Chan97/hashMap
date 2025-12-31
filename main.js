@@ -10,4 +10,11 @@ test.has("Sinatra"); // Should return false
 
 test.remove("carrot") // Test should only have apple and banana keys in it
 
+console.log(test.length()); // Should be 2
+
 console.log(test);
+
+const newTest = new HashMap();
+newTest.set("To", "Delete");
+newTest.clear();
+console.log(newTest); // Should be empty hashmap
