@@ -84,4 +84,39 @@ export class HashMap {
         return false;
     }
 
+    remove(key) {
+        const index = this.hash(key);
+
+        if (!this.buckets[index]) return false; // Returns false if index doesn't exist
+
+        let current = this.buckets[index].head; // Current starts at head
+        let previous = null; // Previous starts at null
+
+        while (current) {
+            if (current.value.key === key) {
+
+                this.size--; // If key exists, will reduce size
+
+                if (previous === null) { // If it's the head node
+                    this.buckets[index].head = current.nextNode; // New head becomes the next node in Linked List
+                    if (!this.buckets[index].head) { // If list is empty, clears index
+                        this.buckets[index] = undefined; 
+                    }
+                    return true;
+                } 
+
+                else { // Middle or tail removal
+                    previous.nextNode = current.nextNode; // Links previous node to next node
+
+                    if (current === this.buckets[index].tail) { // If the current node was the tail
+                        this.buckets[index].tail = previous; // Sets the tail to be previous
+                    }
+                    return true;
+                }
+            }
+            previous = current; // Switches current to be previous. These fire while current exists, but until current value finds key
+            current = current.nextNode; // Switches current to the next node
+        }
+        return false; // Returns false after search too
+    }
 }
