@@ -12,6 +12,9 @@ test.remove("carrot") // Test should only have apple and banana keys in it
 
 console.log(test.length()); // Should be 2
 
+test.set("dog", "brown");
+console.log(test.keys()); // Should be some order of "apple", "banana", "dog"
+
 console.log(test);
 
 const newTest = new HashMap();
