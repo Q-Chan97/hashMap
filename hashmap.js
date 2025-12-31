@@ -162,4 +162,21 @@ export class HashMap {
         }
         return values; // Return array
     }
+
+    entries() {
+        let entries = []; // Array to hold entries
+
+        for (let i = 0; i < this.buckets.length; i++) {
+            if (this.buckets[i]) { // If a bucket is found
+
+                let current = this.buckets[i].head; // Start at head
+
+                while (current) { // Traverse nodes in linked list
+                    entries.push(current.value); // Add the object to entries array
+                    current = current.nextNode; // Advance through linked list
+                }
+            }
+        }
+        return entries; // Return array
+    }
 }
