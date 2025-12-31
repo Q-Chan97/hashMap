@@ -145,4 +145,21 @@ export class HashMap {
         }
         return keys; // Return array
     }
+
+    values() {
+        let values = []; // Array to hold values
+
+        for (let i = 0; i < this.buckets.length; i++) {
+            if (this.buckets[i]) { // If a bucket is found
+
+                let current = this.buckets[i].head; // Start at head
+
+                while (current) { // Traverse nodes in linked list
+                    values.push(current.value.value); // Add the value to the values array
+                    current = current.nextNode; // Advance through linked list
+                }
+            }
+        }
+        return values; // Return array
+    }
 }
