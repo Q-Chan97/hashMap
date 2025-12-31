@@ -128,4 +128,21 @@ export class HashMap {
         this.buckets = new Array(this.capacity); // Make buckets into a fresh array
         this.size = 0; // Reset size to 0
     }
+
+    keys() {
+        let keys = []; // Array to hold keys
+
+        for (let i = 0; i < this.buckets.length; i++) {
+            if (this.buckets[i]) { // If a bucket is found
+
+                let current = this.buckets[i].head; // Start at head
+
+                while (current) { // Traverse nodes in linked list
+                    keys.push(current.value.key); // Add the key to the keys array
+                    current = current.nextNode; // Advance through linked list
+                }
+            }
+        }
+        return keys; // Return array
+    }
 }
