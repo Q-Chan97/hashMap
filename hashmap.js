@@ -20,6 +20,10 @@ export class HashMap {
     }
 
     set(key, value) {
+        if ((this.size + 1) / this.capacity > this.loadFactor) { // If size gets too big, triggers resize
+            this.resize();
+        }
+
         let index = this.hash(key);
 
         if (!this.buckets[index]) { // If index is empty, set value to be passed in value
@@ -178,5 +182,24 @@ export class HashMap {
             }
         }
         return entries; // Return array
+    }
+
+    resize() {
+        let oldBuckets = this.buckets; // Capture old buckets
+
+        this.capacity *= 2; // Double capacity
+        this.size = 0; // Reset size to 0
+        this.buckets = new Array(this.capacity); // Make new array with new capacity
+
+        for (let i = 0; i < oldBuckets.length; i++) {
+            if (!oldBuckets[i]) continue; // Skips empty buckets
+
+            let current = oldBuckets[i].head; // Target start of node in old buckets
+
+            while (current) {
+                this.set(current.value.key, current.value.value); // Adds old buckets back into new array
+                current = current.nextNode; // Moves through each bucket node
+            }
+        }
     }
 }
