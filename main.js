@@ -14,6 +14,7 @@ console.log(test.length()); // Should be 2
 
 test.set("dog", "brown");
 console.log(test.keys()); // Should be some order of "apple", "banana", "dog"
+console.log(test.values()); // Should be some order of "red", "yellow", "brown"
 
 console.log(test);
 
