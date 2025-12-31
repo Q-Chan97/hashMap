@@ -119,4 +119,13 @@ export class HashMap {
         }
         return false; // Returns false after search too
     }
+
+    length() {
+        return this.size; // Returns size of array
+    }
+
+    clear() {
+        this.buckets = new Array(this.capacity); // Make buckets into a fresh array
+        this.size = 0; // Reset size to 0
+    }
 }
